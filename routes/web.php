@@ -86,6 +86,10 @@ Route::group(['prefix'=>'admin','middleware'=>['admin.login']],function(){
         Route::get('chi-tiet-loai-san-pham/{id}',[Admin_Controller::class,'chi_tiet_lsp']);
         Route::post('chi-tiet-loai-san-pham',[Admin_Controller::class,'post_chi_tiet_lsp']);
     });
+    // Báo cáo thống kê
+    Route::group(['prefix'=>'bao-cao-thong-ke'],function(){
+        Route::get('/',[Admin_Controller::class,'bao_cao_thong_ke']);
+    });
     // Sản phẩm
     Route::group(['prefix'=>'san-pham'],function(){
         Route::get('qly-san-pham',[Admin_Controller::class,'qly_sp']);

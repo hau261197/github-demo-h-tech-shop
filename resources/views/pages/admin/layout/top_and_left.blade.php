@@ -104,8 +104,18 @@ function function_show_hide(ten_div) {
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li onclick="function_show_hide('div_01')" >
-                    <a href="{{url('admin')}}" ><img style="width:20px;height:20px;" src="{{URL::asset('resources/hinh/icon/icons8-combo-chart-25.png')}}"/>&emsp; Báo cáo thống kê</a>
+                    <a href="{{url('admin/bao-cao-thong-ke/')}}" ><img style="width:20px;height:20px;" src="{{URL::asset('resources/hinh/icon/icons8-combo-chart-25.png')}}"/>&emsp; Báo cáo thống kê</a>
                 </li>
+                <div id="div_01" >
+                    <ul class="nav nav-second-level">
+                        <li >
+                            <a href="{{url('admin/loai-san-pham/qly-loai-san-pham')}}">Báo cáo doanh thu</a>
+                        </li>
+                        <li >
+                            <a href="{{url('admin/san-pham/qly-san-pham')}}">Báo cáo sản phẩm</a>
+                        </li>
+                    </ul>
+                </div>
                 <li onclick="function_show_hide('div_02')">
                     <a ><img style="width:20px;height:20px;" src="{{URL::asset('resources/hinh/icon/icons8-product-management-25.png')}}"/>
                         &emsp;  Quản lý sản phẩm<span class="fa arrow"></span>

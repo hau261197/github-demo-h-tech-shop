@@ -692,4 +692,21 @@ class Admin_Controller extends Controller
             else return response()->json(['fail'=>'thất bại']);
         }
     }
+/*=====================================BÁO CÁO THỐNG KÊ=========================== */
+    public function bao_cao_thong_ke(){
+        $thong_ke_loai_sp = \DB::table('loai_san_pham')
+        ->join('san_pham','san_pham.ma_loai','=','loai_san_pham.ma_loai')
+        ->select(\DB::raw('count(san_pham.ma_loai) as TSSP, loai_san_pham.ten_loai'))
+        ->groupBy('loai_san_pham.ten_loai')
+        ->get();
+        $start_week = date('Y-m-d',strtotime('-6 day',strtotime(date('Y-m-d'))));
+        $doanh_thu = \DB::table('hoa_don')
+        ->where('ngay_hoa_don','>=',$start_week)
+        ->where('ngay_hoa_don','<=',date('Y-m-d'))
+        ->where('tinh_trang','Hoàn tất')
+        ->select(\DB::raw('sum(don_gia * so_luong - giam_gia) as doanh_thu_ngay,ngay_hoa_don'))
+        ->groupBy('ngay_hoa_don')
+        ->get();
+        return view('pages.admin.bctk.index',['Thongkesanphamtheoloai'=>$thong_ke_loai_sp,'doanh_thu'=>$doanh_thu]);
+    }
 }
